@@ -1,0 +1,76 @@
+js_getContext :: Canvas -> IO Context
+js_getContext = error "js_getContext: only available in JavaScript"
+js_save :: Context -> IO ()
+js_save = error "js_save: only available in JavaScript"
+js_restore :: Context -> IO ()
+js_restore = error "js_restore: only available in JavaScript"
+js_transform :: Double -> Double -> Double -> Double -> Double -> Double -> Context -> IO ()
+js_transform = error "js_transform: only available in JavaScript"
+js_setTransform :: Double -> Double -> Double -> Double -> Double -> Double -> Context -> IO ()
+js_setTransform = error "js_setTransform: only available in JavaScript"
+js_scale :: Double -> Double -> Context -> IO ()
+js_scale = error "js_scale: only available in JavaScript"
+js_translate :: Double -> Double -> Context -> IO ()
+js_translate = error "js_translate: only available in JavaScript"
+js_rotate :: Double -> Context -> IO ()
+js_rotate = error "js_rotate: only available in JavaScript"
+js_fill :: Context -> IO ()
+js_fill = error "js_fill: only available in JavaScript"
+js_stroke :: Context -> IO ()
+js_stroke = error "js_stroke: only available in JavaScript"
+js_beginPath :: Context -> IO ()
+js_beginPath = error "js_beginPath: only available in JavaScript"
+js_closePath :: Context -> IO ()
+js_closePath = error "js_closePath: only available in JavaScript"
+js_clip :: Context -> IO ()
+js_clip = error "js_clip: only available in JavaScript"
+js_moveTo :: Double -> Double -> Context -> IO ()
+js_moveTo = error "js_moveTo: only available in JavaScript"
+js_lineTo :: Double -> Double -> Context -> IO ()
+js_lineTo = error "js_lineTo: only available in JavaScript"
+js_quadraticCurveTo :: Double -> Double -> Double -> Double -> Context -> IO ()
+js_quadraticCurveTo = error "js_quadraticCurveTo: only available in JavaScript"
+js_bezierCurveTo :: Double -> Double -> Double -> Double -> Double -> Double -> Context -> IO ()
+js_bezierCurveTo = error "js_bezierCurveTo: only available in JavaScript"
+js_arc :: Double -> Double -> Double -> Double -> Double -> JSBool -> Context -> IO ()
+js_arc = error "js_arc: only available in JavaScript"
+js_arcTo :: Double -> Double -> Double -> Double -> Double -> Context -> IO ()
+js_arcTo = error "js_arcTo: only available in JavaScript"
+js_rect :: Double -> Double -> Double -> Double -> Context -> IO ()
+js_rect = error "js_rect: only available in JavaScript"
+js_isPointInPath :: Double -> Double -> Context -> IO ()
+js_isPointInPath = error "js_isPointInPath: only available in JavaScript"
+js_fillStyle :: Int -> Int -> Int -> Double -> Context -> IO ()
+js_fillStyle = error "js_fillStyle: only available in JavaScript"
+js_strokeStyle :: Int -> Int -> Int -> Double -> Context -> IO ()
+js_strokeStyle = error "js_strokeStyle: only available in JavaScript"
+js_globalAlpha :: Double -> Context -> IO ()
+js_globalAlpha = error "js_globalAlpha: only available in JavaScript"
+js_lineJoin :: Int -> Context -> IO ()
+js_lineJoin = error "js_lineJoin: only available in JavaScript"
+js_lineCap :: Int -> Context -> IO ()
+js_lineCap = error "js_lineCap: only available in JavaScript"
+js_miterLimit :: Double -> Context -> IO ()
+js_miterLimit = error "js_miterLimit: only available in JavaScript"
+js_setLineDash :: JSArray JSNumber -> Context -> IO ()
+js_setLineDash = error "js_setLineDash: only available in JavaScript"
+js_lineDashOffset :: Double -> Context -> IO ()
+js_lineDashOffset = error "js_lineDashOffset: only available in JavaScript"
+js_font :: JSString -> IO ()
+js_font = error "js_font: only available in JavaScript"
+js_textAlign :: Int -> Context -> IO ()
+js_textAlign = error "js_textAlign: only available in JavaScript"
+js_textBaseline :: Int -> Context -> IO ()
+js_textBaseline = error "js_textBaseline: only available in JavaScript"
+js_lineWidth :: Double -> Context -> IO ()
+js_lineWidth = error "js_lineWidth: only available in JavaScript"
+js_fillText :: JSString -> Double -> Double -> Context -> IO ()
+js_fillText = error "js_fillText: only available in JavaScript"
+js_strokeText :: JSString -> Double -> Double -> Context -> IO ()
+js_strokeText = error "js_strokeText: only available in JavaScript"
+js_fillRect :: Double -> Double -> Double -> Double -> Context -> IO ()
+js_fillRect = error "js_fillRect: only available in JavaScript"
+js_clearRect :: Double -> Double -> Double -> Double -> Context -> IO ()
+js_clearRect = error "js_clearRect: only available in JavaScript"
+js_strokeRect :: Double -> Double -> Double -> Double -> Context -> IO ()
+js_strokeRect = error "js_strokeRect: only available in JavaScript"
