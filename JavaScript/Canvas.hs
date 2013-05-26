@@ -1,4 +1,4 @@
-{-# LANGUAGE EmptyDataDecls, ForeignFunctionInterface, CPP #-}
+{-# LANGUAGE EmptyDataDecls, ForeignFunctionInterface, JavaScriptFFI, CPP #-}
 
 module JavaScript.Canvas ( Context
                          , Canvas
