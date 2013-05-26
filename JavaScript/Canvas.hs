@@ -1,10 +1,12 @@
 {-# LANGUAGE EmptyDataDecls, ForeignFunctionInterface, CPP #-}
 
 module JavaScript.Canvas ( Context
+                         , Canvas
                          , TextAlign(..)
                          , TextBaseline(..)
                          , LineCap(..)
                          , LineJoin(..)
+                         , getContext
                          , save
                          , restore
                          , scale
@@ -44,7 +46,6 @@ module JavaScript.Canvas ( Context
                          ) where
 
 import GHCJS.Types
-import GHCJS.Types.Internal
 import GHCJS.Foreign
 import Data.Text (Text)
 
@@ -76,6 +77,9 @@ data LineJoin = LineJoinBevel
 data LineCap = LineCapButt
              | LineCapRound
              | LineCapSquare deriving (Eq, Show, Enum)
+
+getContext :: Canvas -> IO Context
+getContext = js_getContext
 
 save :: Context -> IO ()
 save = js_save
