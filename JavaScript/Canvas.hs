@@ -90,11 +90,11 @@ restore = js_restore
 {-# INLINE restore #-}
 
 transform :: Double -> Double -> Double -> Double -> Double -> Double -> Context -> IO ()
-transform = transform
+transform = js_transform
 {-# INLINE transform #-}
 
 setTransform :: Double -> Double -> Double -> Double -> Double -> Double -> Context -> IO ()
-setTransform = setTransform
+setTransform = js_setTransform
 {-# INLINE setTransform #-}
 
 scale :: Double -> Double -> Context -> IO ()
