@@ -38,6 +38,7 @@ module JavaScript.Canvas ( Context
                          , miterLimit
                          , fillText
                          , strokeText
+                         , font
                          , textAlign
                          , textBaseline
                          , fillRect
@@ -218,6 +219,10 @@ strokeText :: Text -> Double -> Double -> Context -> IO ()
 strokeText t x y ctx = js_strokeText (toJSString t) x y ctx
 {-# INLINE strokeText #-}
 
+font :: Text -> Context -> IO ()
+font f ctx = js_font (toJSString f) ctx
+{-# INLINE font #-}
+
 fillRect :: Double -> Double -> Double -> Double -> Context -> IO ()
 fillRect = js_fillRect
 {-# INLINE fillRect #-}
@@ -273,7 +278,7 @@ foreign import javascript unsafe "$2.lineCap = ($1===0)?'butt':(($1===1)?'round'
 foreign import javascript unsafe "$2.miterLimit = $1"             js_miterLimit :: Double -> Context -> IO ()
 foreign import javascript unsafe "$2.setLineDash($1)"  js_setLineDash :: JSArray JSNumber -> Context -> IO ()
 foreign import javascript unsafe "$2.lineDashOffset = $1"     js_lineDashOffset :: Double -> Context -> IO ()
-foreign import javascript unsafe "$2.font = $1"                                  js_font :: JSString -> IO ()
+foreign import javascript unsafe "$2.font = $1"                       js_font :: JSString -> Context -> IO ()
 foreign import javascript unsafe "$2.textAlign = $1"                  js_textAlign :: Int -> Context -> IO ()
 foreign import javascript unsafe "$2.textBaseline = $1"            js_textBaseline :: Int -> Context -> IO ()
 

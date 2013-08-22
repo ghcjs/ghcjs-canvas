@@ -56,7 +56,7 @@ js_setLineDash :: JSArray JSNumber -> Context -> IO ()
 js_setLineDash = error "js_setLineDash: only available in JavaScript"
 js_lineDashOffset :: Double -> Context -> IO ()
 js_lineDashOffset = error "js_lineDashOffset: only available in JavaScript"
-js_font :: JSString -> IO ()
+js_font :: JSString -> Context -> IO ()
 js_font = error "js_font: only available in JavaScript"
 js_textAlign :: Int -> Context -> IO ()
 js_textAlign = error "js_textAlign: only available in JavaScript"
