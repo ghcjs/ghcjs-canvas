@@ -45,9 +45,12 @@ module JavaScript.Canvas ( Context
                          , clearRect
                          ) where
 
-import GHCJS.Types
-import GHCJS.Foreign
+import Control.Applicative
+import Control.Monad
 import Data.Text (Text)
+import GHCJS.Foreign
+import GHCJS.Marshal
+import GHCJS.Types
 
 data Canvas_
 data Context_
@@ -185,8 +188,10 @@ miterLimit :: Double -> Context -> IO ()
 miterLimit = js_miterLimit
 {-# INLINE miterLimit #-}
 
-setLineDash :: [Int] -> Context -> IO ()
-setLineDash = error "setLineDash: not yet implemented"
+setLineDash :: (Num a, ToJSRef a) => [a] -> Context -> IO ()
+setLineDash lst ctx = do
+     arr <- toArray =<< mapM (return . castRef <=< toJSRef) lst
+     js_setLineDash arr ctx
 {-# INLINE setLineDash #-}
 
 lineDashOffset :: Double -> Context -> IO ()
