@@ -276,8 +276,8 @@ foreign import javascript unsafe "$2.lineJoin = ($1===0)?'bevel':(($1===1)?'roun
 foreign import javascript unsafe "$2.lineCap = ($1===0)?'butt':(($1===1)?'round':'square')"
                                                            js_lineCap :: Int              -> Context -> IO ()
 foreign import javascript unsafe "$2.miterLimit = $1"             js_miterLimit :: Double -> Context -> IO ()
-foreign import javascript unsafe "$2.setLineDash($1)"  js_setLineDash :: JSArray JSNumber -> Context -> IO ()
-foreign import javascript unsafe "$2.lineDashOffset = $1"     js_lineDashOffset :: Double -> Context -> IO ()
+foreign import javascript unsafe "h$ghcjs_setLineDash($1,$2)"  js_setLineDash :: JSArray JSNumber -> Context -> IO ()
+foreign import javascript unsafe "h$ghcjs_lineDashOffset($1,$2)"     js_lineDashOffset :: Double -> Context -> IO ()
 foreign import javascript unsafe "$2.font = $1"                       js_font :: JSString -> Context -> IO ()
 foreign import javascript unsafe "$2.textAlign = $1"                  js_textAlign :: Int -> Context -> IO ()
 foreign import javascript unsafe "$2.textBaseline = $1"            js_textBaseline :: Int -> Context -> IO ()
