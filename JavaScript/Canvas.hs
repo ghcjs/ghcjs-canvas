@@ -15,6 +15,7 @@ module JavaScript.Canvas ( Context
                          , transform
                          , setTransform
                          , fill
+                         , fillRule
                          , stroke
                          , beginPath
                          , closePath
@@ -116,6 +117,10 @@ rotate = js_rotate
 fill :: Context -> IO ()
 fill = js_fill
 {-# INLINE fill #-}
+
+fillRule :: Text -> Context -> IO ()
+fillRule rule = js_fill_rule (toJSString rule)
+{-# INLINE fillRule #-}
 
 stroke :: Context -> IO ()
 stroke = js_stroke
@@ -248,6 +253,7 @@ foreign import javascript unsafe "$3.scale($1,$2)"     js_scale       :: Double 
 foreign import javascript unsafe "$3.translate($1,$2)" js_translate   :: Double -> Double -> Context -> IO ()
 foreign import javascript unsafe "$2.rotate($1)"       js_rotate      :: Double           -> Context -> IO ()
 foreign import javascript unsafe "$1.fill()"           js_fill        ::                     Context -> IO ()
+foreign import javascript unsafe "$2.fill($1)"         js_fill_rule   ::         JSString -> Context -> IO ()
 foreign import javascript unsafe "$1.stroke()"         js_stroke      ::                     Context -> IO ()
 foreign import javascript unsafe "$1.beginPath()"      js_beginPath   ::                     Context -> IO ()
 foreign import javascript unsafe "$1.closePath()"      js_closePath   ::                     Context -> IO ()

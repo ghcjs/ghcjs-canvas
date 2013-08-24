@@ -16,6 +16,8 @@ js_rotate :: Double -> Context -> IO ()
 js_rotate = error "js_rotate: only available in JavaScript"
 js_fill :: Context -> IO ()
 js_fill = error "js_fill: only available in JavaScript"
+js_fill_rule :: JSString -> Context -> IO ()
+js_fill_rule = error "js_fill_rule: only available in JavaScript"
 js_stroke :: Context -> IO ()
 js_stroke = error "js_stroke: only available in JavaScript"
 js_beginPath :: Context -> IO ()
