@@ -70,6 +70,8 @@ js_fillText :: JSString -> Double -> Double -> Context -> IO ()
 js_fillText = error "js_fillText: only available in JavaScript"
 js_strokeText :: JSString -> Double -> Double -> Context -> IO ()
 js_strokeText = error "js_strokeText: only available in JavaScript"
+js_measureText :: JSString -> Context -> IO (JSRef a)
+js_measureText = error "js_measureText: only available in JavaScript"
 js_fillRect :: Double -> Double -> Double -> Double -> Context -> IO ()
 js_fillRect = error "js_fillRect: only available in JavaScript"
 js_clearRect :: Double -> Double -> Double -> Double -> Context -> IO ()

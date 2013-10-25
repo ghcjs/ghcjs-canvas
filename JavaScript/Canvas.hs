@@ -40,6 +40,7 @@ module JavaScript.Canvas ( Context
                          , fillText
                          , strokeText
                          , font
+                         , measureText
                          , textAlign
                          , textBaseline
                          , fillRect
@@ -49,6 +50,7 @@ module JavaScript.Canvas ( Context
 
 import Control.Applicative
 import Control.Monad
+import Data.Maybe (fromJust)
 import Data.Text (Text)
 import GHCJS.Foreign
 import GHCJS.Marshal
@@ -228,6 +230,12 @@ font :: Text -> Context -> IO ()
 font f ctx = js_font (toJSString f) ctx
 {-# INLINE font #-}
 
+measureText :: Text -> Context -> IO Double
+measureText t ctx = js_measureText (toJSString t) ctx
+                    >>= getProp "width"
+                    >>= liftM fromJust . fromJSRef
+{-# INLINE measureText #-}
+
 fillRect :: Double -> Double -> Double -> Double -> Context -> IO ()
 fillRect = js_fillRect
 {-# INLINE fillRect #-}
@@ -287,13 +295,13 @@ foreign import javascript unsafe "h$ghcjs_lineDashOffset($1,$2)"     js_lineDash
 foreign import javascript unsafe "$2.font = $1"                       js_font :: JSString -> Context -> IO ()
 foreign import javascript unsafe "$2.textAlign = $1"                  js_textAlign :: Int -> Context -> IO ()
 foreign import javascript unsafe "$2.textBaseline = $1"            js_textBaseline :: Int -> Context -> IO ()
-
-
 foreign import javascript unsafe "$2.lineWidth = $1"     js_lineWidth :: Double           -> Context -> IO ()
 foreign import javascript unsafe "$4.fillText($1,$2,$3)"
                                               js_fillText :: JSString -> Double -> Double -> Context -> IO ()
 foreign import javascript unsafe "$4.strokeText($1,$2,$3)"
                                             js_strokeText :: JSString -> Double -> Double -> Context -> IO ()
+foreign import javascript unsafe "$2.measureText($1)"
+                                            js_measureText :: JSString                    -> Context -> IO (JSRef a)                                                            
 foreign import javascript unsafe "$5.fillRect($1,$2,$3,$4)"
                                       js_fillRect :: Double -> Double -> Double -> Double -> Context -> IO ()
 foreign import javascript unsafe "$5.clearRect($1,$2,$3,$4)"
