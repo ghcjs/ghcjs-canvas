@@ -248,7 +248,7 @@ strokeRect :: Double -> Double -> Double -> Double -> Context -> IO ()
 strokeRect = js_strokeRect
 {-# INLINE strokeRect #-}
 
-#ifdef __GHCJS__
+#ifdef ghcjs_HOST_OS
 foreign import javascript unsafe "$1.getContext('2d')" js_getContext  ::                     Canvas  -> IO Context
 
 foreign import javascript unsafe "$1.save()"           js_save        ::                     Context -> IO ()
