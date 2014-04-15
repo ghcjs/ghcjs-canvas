@@ -20,3 +20,4 @@ library
                        text,
                        ghcjs-base
   default-language:    Haskell2010
+  include-dirs:        JavaScript
