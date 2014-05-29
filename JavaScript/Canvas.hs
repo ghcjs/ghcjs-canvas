@@ -48,6 +48,8 @@ module JavaScript.Canvas ( Context
                          , clearRect
                          ) where
 
+import Prelude hiding (Left, Right)
+
 import Control.Applicative
 import Control.Monad
 import Data.Maybe (fromJust)
@@ -207,11 +209,22 @@ lineDashOffset = js_lineDashOffset
 {-# INLINE lineDashOffset #-}
 
 textAlign :: TextAlign -> Context -> IO ()
-textAlign = error "textAlign: not yet implemented"
+textAlign align ctx = case align of
+     Start  -> js_textAlign (toJSString "start") ctx
+     End    -> js_textAlign (toJSString "end") ctx
+     Left   -> js_textAlign (toJSString "left") ctx
+     Right  -> js_textAlign (toJSString "right") ctx
+     Center -> js_textAlign (toJSString "center") ctx
 {-# INLINE textAlign #-}
 
 textBaseline :: TextBaseline -> Context -> IO ()
-textBaseline = error "textBaseline: not yet implemented"
+textBaseline baseline ctx = case baseline of 
+     Top         -> js_textBaseline (toJSString "top") ctx
+     Hanging     -> js_textBaseline (toJSString "hanging") ctx
+     Middle      -> js_textBaseline (toJSString "middle") ctx
+     Alphabetic  -> js_textBaseline (toJSString "alphabetic") ctx
+     Ideographic -> js_textBaseline (toJSString "ideographic") ctx
+     Bottom      -> js_textBaseline (toJSString "bottom") ctx
 {-# INLINE textBaseline #-}
 
 lineWidth :: Double -> Context -> IO ()
@@ -293,8 +306,8 @@ foreign import javascript unsafe "$2.miterLimit = $1"             js_miterLimit 
 foreign import javascript unsafe "h$ghcjs_setLineDash($1,$2)"  js_setLineDash :: JSArray JSNumber -> Context -> IO ()
 foreign import javascript unsafe "h$ghcjs_lineDashOffset($1,$2)"     js_lineDashOffset :: Double -> Context -> IO ()
 foreign import javascript unsafe "$2.font = $1"                       js_font :: JSString -> Context -> IO ()
-foreign import javascript unsafe "$2.textAlign = $1"                  js_textAlign :: Int -> Context -> IO ()
-foreign import javascript unsafe "$2.textBaseline = $1"            js_textBaseline :: Int -> Context -> IO ()
+foreign import javascript unsafe "$2.textAlign = $1"             js_textAlign :: JSString -> Context -> IO ()
+foreign import javascript unsafe "$2.textBaseline = $1"       js_textBaseline :: JSString -> Context -> IO ()
 foreign import javascript unsafe "$2.lineWidth = $1"     js_lineWidth :: Double           -> Context -> IO ()
 foreign import javascript unsafe "$4.fillText($1,$2,$3)"
                                               js_fillText :: JSString -> Double -> Double -> Context -> IO ()
