@@ -60,9 +60,9 @@ js_lineDashOffset :: Double -> Context -> IO ()
 js_lineDashOffset = error "js_lineDashOffset: only available in JavaScript"
 js_font :: JSString -> Context -> IO ()
 js_font = error "js_font: only available in JavaScript"
-js_textAlign :: Int -> Context -> IO ()
+js_textAlign :: JSString -> Context -> IO ()
 js_textAlign = error "js_textAlign: only available in JavaScript"
-js_textBaseline :: Int -> Context -> IO ()
+js_textBaseline :: JSString -> Context -> IO ()
 js_textBaseline = error "js_textBaseline: only available in JavaScript"
 js_lineWidth :: Double -> Context -> IO ()
 js_lineWidth = error "js_lineWidth: only available in JavaScript"
