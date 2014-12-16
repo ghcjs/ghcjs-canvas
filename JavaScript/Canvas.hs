@@ -2,6 +2,7 @@
 
 module JavaScript.Canvas ( Context
                          , Canvas
+                         , Image
                          , TextAlign(..)
                          , TextBaseline(..)
                          , LineCap(..)
@@ -46,6 +47,7 @@ module JavaScript.Canvas ( Context
                          , fillRect
                          , strokeRect
                          , clearRect
+                         , drawImage
                          ) where
 
 import Prelude hiding (Left, Right)
@@ -62,6 +64,9 @@ data Canvas_
 data Context_
 type Canvas = JSRef Canvas_
 type Context = JSRef Context_
+
+data Image_
+type Image = JSRef Image_
 
 data TextAlign = Start
                | End
@@ -261,6 +266,10 @@ strokeRect :: Double -> Double -> Double -> Double -> Context -> IO ()
 strokeRect = js_strokeRect
 {-# INLINE strokeRect #-}
 
+drawImage :: Image -> Int -> Int -> Int -> Int -> Context -> IO ()
+drawImage = js_drawImage
+{-# INLINE drawImage #-}
+
 #ifdef ghcjs_HOST_OS
 foreign import javascript unsafe "$1.getContext('2d')" js_getContext  ::                     Canvas  -> IO Context
 
@@ -321,6 +330,9 @@ foreign import javascript unsafe "$5.clearRect($1,$2,$3,$4)"
                                      js_clearRect :: Double -> Double -> Double -> Double -> Context -> IO ()
 foreign import javascript unsafe "$5.strokeRect($1,$2,$3,$4)"
                                     js_strokeRect :: Double -> Double -> Double -> Double -> Context -> IO ()
+
+foreign import javascript unsafe "$6.drawImage($1,$2,$3,$4,$5)"
+                                    js_drawImage :: Image -> Int -> Int -> Int -> Int -> Context -> IO () 
 
 #else
 
